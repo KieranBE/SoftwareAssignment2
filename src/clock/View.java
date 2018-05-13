@@ -53,6 +53,10 @@ public class View implements Observer {
         editButton.addActionListener(new ActionListener(){
 
         public void actionPerformed(ActionEvent evt){
+            JFrame frame3 = new JFrame();
+            EditAlarm dialog = new EditAlarm(frame3, true);
+            dialog.setLocationRelativeTo(frame3);
+            dialog.setVisible(true);
             System.out.println("Going to Edit Alarms");
         }
         });
@@ -74,6 +78,10 @@ public class View implements Observer {
         viewButton.addActionListener(new ActionListener(){
 
         public void actionPerformed(ActionEvent evt){
+            JFrame frame4 = new JFrame();
+            ViewAlarm dialog = new ViewAlarm(frame4, true);
+            dialog.setLocationRelativeTo(frame4);
+            dialog.setVisible(true);
             System.out.println("Going to View Alarms");
         }
         });
