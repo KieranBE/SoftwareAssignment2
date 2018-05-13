@@ -27,7 +27,7 @@ public class Model extends Observable {
         month = date.get(Calendar.MONTH);
         month = month + 1;
         year = date.get(Calendar.YEAR);
-
+       
         hour = date.get(Calendar.HOUR);
         minute = date.get(Calendar.MINUTE);
         oldSecond = second;
