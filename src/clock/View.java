@@ -36,6 +36,7 @@ public class View implements Observer {
         addAlarmButton.addActionListener(new ActionListener(){
             
             public void actionPerformed(ActionEvent evt){
+                AddAlarm.setVisible(true);
                 System.out.println("Going to Add Alarm");
             }
             });
@@ -60,6 +61,7 @@ public class View implements Observer {
 
         public void actionPerformed(ActionEvent evt){
             System.out.println("Going to Save Alarms");
+            System.exit(0);
         }
         });
         

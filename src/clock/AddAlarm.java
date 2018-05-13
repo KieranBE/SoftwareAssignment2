@@ -45,7 +45,7 @@ public class AddAlarm extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Add Alarm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -76,7 +76,12 @@ public class AddAlarm extends javax.swing.JDialog {
 
         jLabel6.setText("Year");
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Go Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,7 +153,7 @@ public class AddAlarm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         PriorityQueue<Alarm> q;  
+        PriorityQueue<Alarm> q;  
         q = new SortedArrayPriorityQueue<>(8);
         int second =(Integer) secSpin.getValue();
         int minute =(Integer) minSpin.getValue();
@@ -167,6 +172,10 @@ public class AddAlarm extends javax.swing.JDialog {
         System.out.println("Add operation failed: " + e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
