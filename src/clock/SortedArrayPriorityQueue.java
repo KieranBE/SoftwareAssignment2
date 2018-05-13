@@ -112,11 +112,114 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
 
             if(gateCode == 1)
             {
-                while (i > 0 && ((PriorityItem<T>) storage[i - 1]).getYear() < year) {
-                    storage[i] = storage[i - 1];
-                    i = i - 1;
+                if(tailIndex == 0)
+                {
+                    int priority = 1;
+                    storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priority);
                 }
-                storage[i] = new PriorityItem<>(second, minute, hour, day, month, year);
+                else
+                {
+                    int priorityBackup = 0;
+                    int BREAK = 0;
+                    i = 0;
+
+                    while (BREAK != 1)
+                    if(year > ((PriorityItem<T>) storage[i]).getYear())
+                    {
+                        priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                        priorityBackup++;
+                    }
+                    else if(year == ((PriorityItem<T>) storage[i]).getYear())
+                    {
+                        if(month == ((PriorityItem<T>) storage[i]).getMonth())
+                        {
+                            if(day > ((PriorityItem<T>) storage[i]).getDay())
+                            {
+                                priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                priorityBackup++;
+                            }
+                            else if(day == ((PriorityItem<T>) storage[i]).getDay())
+                            {
+                                if(hour > ((PriorityItem<T>) storage[i]).getHour())
+                                {
+                                    priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                    priorityBackup++;
+                                }
+                                else if(hour == ((PriorityItem<T>) storage[i]).getHour())
+                                {
+                                    if(minute > ((PriorityItem<T>) storage[i]).getMinute())
+                                    {
+                                        priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                        priorityBackup++;
+                                    }
+                                    else if(minute == ((PriorityItem<T>) storage[i]).getMinute())
+                                    {
+                                        if(second > ((PriorityItem<T>) storage[i]).getSecond())
+                                        {
+                                            priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                            priorityBackup++;
+                                        }
+                                        else
+                                        {
+                                            BREAK = 1;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        BREAK = 1;
+                                    }
+                                }
+                                else
+                                {
+                                    BREAK = 1;
+                                }
+                            }
+                            else
+                            {
+                                BREAK = 1;
+                            }
+                        }
+                        else if(month > ((PriorityItem<T>) storage[i]).getMonth())
+                        {
+                            priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                            priorityBackup++;
+                        }
+                        else
+                        {
+                            BREAK = 1;
+                        }
+                    }
+                    else
+                    {
+                        BREAK = 1;
+                    }
+
+
+                    i = tailIndex;
+                    while (i > 0 && ((PriorityItem<T>) storage[i - 1]).getPriority() < priorityBackup) {
+                        storage[i] = storage[i - 1];
+                        i = i - 1;
+                    }
+                    storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
+
+                    if(priorityBackup == 0)
+                    {
+                        while (i > 0 && ((PriorityItem<T>) storage[i - 1]).getPriority() < priorityBackup) {
+                        storage[i] = storage[i - 1];
+                        i = i - 1;
+                        }
+                        
+                        storage[0] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
+                    }
+                    else
+                    {
+
+
+                    }
+
+
+
+                }
             }
         }
     }

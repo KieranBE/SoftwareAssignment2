@@ -35,9 +35,9 @@ public class AddAlarm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        secSpin1 = new javax.swing.JSpinner();
-        minSpin1 = new javax.swing.JSpinner();
-        houSpin1 = new javax.swing.JSpinner();
+        daySpin = new javax.swing.JSpinner();
+        monSpin = new javax.swing.JSpinner();
+        yearSpin = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -74,11 +74,11 @@ public class AddAlarm extends javax.swing.JFrame {
             }
         });
 
-        secSpin1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+        daySpin.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
 
-        minSpin1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        monSpin.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
 
-        houSpin1.setModel(new javax.swing.SpinnerNumberModel(2018, 2018, null, 1));
+        yearSpin.setModel(new javax.swing.SpinnerNumberModel(2018, 2018, null, 1));
 
         jLabel4.setText("Day");
 
@@ -109,16 +109,16 @@ public class AddAlarm extends javax.swing.JFrame {
                                     .addComponent(houSpin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(secSpin1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(daySpin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addComponent(minSpin1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(monSpin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
-                                    .addComponent(houSpin1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(yearSpin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(jButton1)))
@@ -144,9 +144,9 @@ public class AddAlarm extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(secSpin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minSpin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(houSpin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(daySpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monSpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(yearSpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(93, Short.MAX_VALUE))
@@ -156,7 +156,24 @@ public class AddAlarm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        PriorityQueue<Alarm> q;  
+        q = new SortedArrayPriorityQueue<>(8);
+        int second =(Integer) secSpin.getValue();
+        int minute =(Integer) minSpin.getValue();
+        int hour =(Integer) houSpin.getValue();
+        
+        int day =(Integer) daySpin.getValue();
+        int month =(Integer) monSpin.getValue();
+        int year =(Integer) yearSpin.getValue();
+        
+        System.out.println("Time:" + hour + ":" + minute + ":" + second 
+        + " Date: " + day + "/" + month + "/" + year);
+        
+        try{
+        q.add(second, minute, hour, day, month, year);
+        } catch (QueueOverflowException e) {
+        System.out.println("Add operation failed: " + e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -195,8 +212,8 @@ public class AddAlarm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner daySpin;
     private javax.swing.JSpinner houSpin;
-    private javax.swing.JSpinner houSpin1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -206,8 +223,8 @@ public class AddAlarm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JSpinner minSpin;
-    private javax.swing.JSpinner minSpin1;
+    private javax.swing.JSpinner monSpin;
     private javax.swing.JSpinner secSpin;
-    private javax.swing.JSpinner secSpin1;
+    private javax.swing.JSpinner yearSpin;
     // End of variables declaration//GEN-END:variables
 }

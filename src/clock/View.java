@@ -4,6 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.Observer;
 import java.util.Observable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class View implements Observer {
     
@@ -28,20 +30,48 @@ public class View implements Observer {
         
         Container pane = frame.getContentPane();
         
-        JButton button = new JButton("Button 1 (PAGE_START)");
-        pane.add(button, BorderLayout.PAGE_START);
-         
+        JButton addAlarmButton = new JButton("Add Alarm");
+        pane.add(addAlarmButton, BorderLayout.PAGE_START);
+        
+        addAlarmButton.addActionListener(new ActionListener(){
+            
+            public void actionPerformed(ActionEvent evt){
+                System.out.println("Going to Add Alarm");
+            }
+            });
+        
         panel.setPreferredSize(new Dimension(200, 200));
         pane.add(panel, BorderLayout.CENTER);
          
-        button = new JButton("Button 3 (LINE_START)");
-        pane.add(button, BorderLayout.LINE_START);
+        JButton editButton = new JButton("Edit Alarms");
+        pane.add(editButton, BorderLayout.LINE_START);
          
-        button = new JButton("Long-Named Button 4 (PAGE_END)");
-        pane.add(button, BorderLayout.PAGE_END);
+        editButton.addActionListener(new ActionListener(){
+
+        public void actionPerformed(ActionEvent evt){
+            System.out.println("Going to Edit Alarms");
+        }
+        });
+        
+        JButton saveButton = new JButton("Save Alarms and Quit");
+        pane.add(saveButton, BorderLayout.PAGE_END);
          
-        button = new JButton("5 (LINE_END)");
-        pane.add(button, BorderLayout.LINE_END);
+        saveButton.addActionListener(new ActionListener(){
+
+        public void actionPerformed(ActionEvent evt){
+            System.out.println("Going to Save Alarms");
+        }
+        });
+        
+        JButton viewButton = new JButton("View Alarms");
+        pane.add(viewButton, BorderLayout.LINE_END);
+        
+        viewButton.addActionListener(new ActionListener(){
+
+        public void actionPerformed(ActionEvent evt){
+            System.out.println("Going to View Alarms");
+        }
+        });
         
         // End of borderlayout code
         
