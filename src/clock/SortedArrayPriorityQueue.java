@@ -69,6 +69,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
     @Override
     public void add(int second, int minute, int hour, int day, int month, int year) throws QueueOverflowException {
         tailIndex = tailIndex + 1;
+        System.out.println("Tail Index " + tailIndex);
         if (tailIndex >= capacity) {
             /* No resizing implemented, but that would be a good enhancement. */
             tailIndex = tailIndex - 1;
@@ -228,13 +229,13 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         BREAK = 1;
                     }
                     
-                    i = tailIndex;
+                i = tailIndex;
                     while (i > 0 && ((PriorityItem<T>) storage[i - 1]).getPriority() < priorityBackup) {
                         storage[i] = storage[i - 1];
                         i = i - 1;
                     }
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
-                    System.out.println(((PriorityItem<T>) storage[i]).getSecond()+"");
+                    System.out.println(((PriorityItem<T>) storage[i]).getPriority()+"");
 
                     if(priorityBackup == 0)
                     {
@@ -244,7 +245,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         }
                         
                         storage[0] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
-                        System.out.println(((PriorityItem<T>) storage[0]).getSecond()+"");
+                        System.out.println(((PriorityItem<T>) storage[0]).getPriority()+" Backup = 0");
                     }
                     else
                     {

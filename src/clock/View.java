@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class View implements Observer {
     
     ClockPanel panel;
-    
+        
     public View(Model model) {
         JFrame frame = new JFrame();
         panel = new ClockPanel(model);

@@ -9,8 +9,8 @@ package clock;
  *
  * @author Kieran
  */
-public class AddAlarm extends javax.swing.JDialog {
 
+public class AddAlarm extends javax.swing.JDialog {
     /**
      * Creates new form AddAlarm
      */
@@ -153,8 +153,10 @@ public class AddAlarm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PriorityQueue<Alarm> q;  
+
+        PriorityQueue<Alarm> q;
         q = new SortedArrayPriorityQueue<>(8);
+        
         int second =(Integer) secSpin.getValue();
         int minute =(Integer) minSpin.getValue();
         int hour =(Integer) houSpin.getValue();
