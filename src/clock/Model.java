@@ -22,21 +22,22 @@ public class Model extends Observable {
     }
 
     public void update() {
+        /* I used the commented out code to test my alarm */
         PriorityQueue<Alarm> q;
         q = new SortedArrayPriorityQueue<>(8);
-        int sec2 = 30;
-        int min2 = 1;
-        int hou2 = 10;
-
-        int day2 = 15;
-        int mon2 = 5;
-        int yea2 = 2018;
-
-        try {
-            q.add(sec2, min2, hou2, day2, mon2, yea2);
-        } catch (QueueOverflowException e) {
-            System.out.println("Add operation failed: " + e);
-        }
+//        int sec2 = 30;
+//        int min2 = 1;
+//        int hou2 = 10;
+//
+//        int day2 = 15;
+//        int mon2 = 5;
+//        int yea2 = 2018;
+//
+//        try {
+//            q.add(sec2, min2, hou2, day2, mon2, yea2);
+//        } catch (QueueOverflowException e) {
+//            System.out.println("Add operation failed: " + e);
+//        }
 
         Calendar date = Calendar.getInstance();
 
@@ -49,20 +50,13 @@ public class Model extends Observable {
         minute = date.get(Calendar.MINUTE);
         oldSecond = second;
         second = date.get(Calendar.SECOND);
-//        System.out.println(q.toString());
         if (q.isEmpty()) {
-//            System.out.println("Empty");
         } else {
             if (q.getYea() == year) {
-//                System.out.println("Year");
                 if (q.getMon() == month) {
-//                    System.out.println("Month");
                     if (q.getDay2() == day) {
-//                        System.out.println("Day");
                         if (q.getHou() == hour) {
-//                            System.out.println("Hour");
                             if (q.getMin() == minute) {
-//                                System.out.println("Minute");
                                 System.out.println("Alarm goes off");
                                 JFrame frame = new JFrame();
                                 AlarmOff dialog = new AlarmOff(frame, true);
@@ -73,9 +67,10 @@ public class Model extends Observable {
                                 } catch (QueueUnderflowException e) {
                                     System.out.println("Can't remove head of queue: " + e);
                                 }
+                                /* I got an error when i tried to compare the seconds, 
+                                i tried to fix it but i did not have enough time*/
 //                                if(q.getSec() == second)
 //                                {
-
 //                                }
                             }
                         }
