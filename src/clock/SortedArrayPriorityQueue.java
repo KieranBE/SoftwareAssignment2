@@ -187,7 +187,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                                     }
                                     else if(minute == ((PriorityItem<T>) storage[i]).getMinute())
                                     {
-                                        if(second > ((PriorityItem<T>) storage[i]).getSecond())
+                                        if(second >= ((PriorityItem<T>) storage[i]).getSecond())
                                         {
                                             priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                             priorityBackup++;
@@ -268,6 +268,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
             for (int i = 0; i < tailIndex; i++) {
                 storage[i] = storage[i + 1];
             }
+            System.out.println("Alarm has gone off and been removed");
             tailIndex = tailIndex - 1;
         }
     }
@@ -289,4 +290,28 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         result = result + "]";
         return result;
     }
+    
+    public int getSec() {
+            return ((PriorityItem<T>) storage[0]).getSecond();
+        }
+    
+    public int getMin(){
+            return ((PriorityItem<T>) storage[0]).getMinute();
+        }
+    
+    public int getHou(){
+            return ((PriorityItem<T>) storage[0]).getHour();
+        }
+    
+    public int getDay2(){
+            return ((PriorityItem<T>) storage[0]).getDay();
+        }
+    
+    public int getMon(){
+            return ((PriorityItem<T>) storage[0]).getMonth();
+        }
+    
+    public int getYea(){
+            return ((PriorityItem<T>) storage[0]).getYear();
+        }
 }
