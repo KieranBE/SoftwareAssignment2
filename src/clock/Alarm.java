@@ -10,7 +10,7 @@ package clock;
  * @author Kieran
  */
 public class Alarm {
-    
+
     protected String name;
 
     public Alarm(String name) {
@@ -25,5 +25,5 @@ public class Alarm {
     public String toString() {
         return getName();
     }
-    
+
 }

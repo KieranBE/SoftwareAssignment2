@@ -154,9 +154,12 @@ public class AddAlarm extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        /* This is used to Add the spinner values to the Sorted Array,
+        it added it however i couldnt make it only use it onces*/
         PriorityQueue<Alarm> q;
         q = new SortedArrayPriorityQueue<>(8);
         
+        /* Sets varibles to the spinner values*/
         int second =(Integer) secSpin.getValue();
         int minute =(Integer) minSpin.getValue();
         int hour =(Integer) houSpin.getValue();
@@ -176,6 +179,7 @@ public class AddAlarm extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        /* Closes the JDialog box */
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 

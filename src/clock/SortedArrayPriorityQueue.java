@@ -77,59 +77,56 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         } else {
             /* Scan backwards looking for insertion point */
             int i = tailIndex;
+            
+            /* Gate code is used to carry on if the alarm has not passed yet*/
             int gateCode = 0;
 
+            /* This part of the code checks if the detials the users have already passed or not
+            it goes checks if a part is great, like if the year is greater there is no need to check
+            everything else*/
             Calendar date = Calendar.getInstance();
-//            System.out.println(second + " " + minute + " " + hour + " " + day + " " + month+ " " + year);
-//            System.out.println("Second: "+ date.get(Calendar.SECOND) + " Min: " + date.get(Calendar.MINUTE) + " Hour: " + date.get(Calendar.HOUR) + "Day " + date.get(Calendar.DAY_OF_MONTH) + "Month " + (date.get(Calendar.MONTH)+1) + "Year: " + date.get(Calendar.YEAR));
             if (year > date.get(Calendar.YEAR)) {
                 gateCode = 1;
-//                System.out.println("Year big");
             } else if (year == date.get(Calendar.YEAR)) {
-//                System.out.println("Year Equal");
-//                System.out.println(month);
-//                System.out.println((date.get(Calendar.MONTH)+1));
+
                 if (month == (date.get(Calendar.MONTH) + 1)) {
-//                System.out.println("Month Equal");
+
                     if (day > date.get(Calendar.DAY_OF_MONTH)) {
                         gateCode = 1;
-//                    System.out.println("Date big");
+
                     } else if (day == date.get(Calendar.DAY_OF_MONTH)) {
-//                        System.out.println("Date Equal");
+
                         if (hour > date.get(Calendar.HOUR)) {
                             gateCode = 1;
-//                        System.out.println("Hour Big");
+
                         } else if (hour == date.get(Calendar.HOUR)) {
-//                            System.out.println("Hour Equal");
 
                             if (minute > date.get(Calendar.MINUTE)) {
                                 gateCode = 1;
-//                            System.out.println("Minute Big");
+
                             } else if (minute == date.get(Calendar.MINUTE)) {
-//                                System.out.println("Minute Equal");
+
                                 if (second > date.get(Calendar.SECOND)) {
                                     gateCode = 1;
-//                                System.out.println("Second Big");
+
                                 } else if (second == date.get(Calendar.SECOND)) {
-//                                System.out.println("Second Equal");
+
                                 }
                             }
                         }
                     }
                 } else if (month > (date.get(Calendar.MONTH) + 1)) {
                     gateCode = 1;
-//                System.out.println("Month big");
                 }
             }
 
-//            System.out.println(gateCode);
             if (gateCode == 1) {
                 if (tailIndex == 0) {
-//                    System.out.println(i);
                     int priority = 0;
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priority);
-//                    System.out.println(((PriorityItem<T>) storage[i]).getSecond()+"");
                 } else {
+                    
+                    /* Uses priority backup as a placeholder and break to get out of the loop*/
                     int priorityBackup = 0;
                     int BREAK = 0;
                     i = 0;
@@ -156,7 +153,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                                                 priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                                 priorityBackup++;
                                             } else {
-                                                //priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                                priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                                 priorityBackup--;
                                                 BREAK = 1;
                                             }
@@ -188,7 +185,10 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                             priorityBackup--;
                             BREAK = 1;
                         }
+                        
+                        /* Adds one to i this is to break the loop if searches through all items*/
                         i++;
+                        
                         if (i == tailIndex) {
                             BREAK = 1;
                         }
@@ -200,8 +200,6 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         i = i - 1;
                     }
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
-//                    System.out.println(((PriorityItem<T>) storage[i]).getPriority()+"");
-
                 }
             }
         }
@@ -212,6 +210,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         if (isEmpty()) {
             throw new QueueUnderflowException();
         } else {
+            /*Used this for testing if alarm was removed */
             System.out.println("Alarm" + storage[0].toString() + " has been removed");
             for (int i = 0; i < tailIndex; i++) {
                 storage[i] = storage[i + 1];
@@ -238,6 +237,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         return result;
     }
 
+    /* These are used to get the each variable by its own*/
     public int getSec() {
         return ((PriorityItem<T>) storage[0]).getSecond();
     }
