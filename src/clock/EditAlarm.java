@@ -34,6 +34,11 @@ public class EditAlarm extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Go Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +74,29 @@ public class EditAlarm extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        PriorityQueue<Alarm> q;
+        q = new SortedArrayPriorityQueue<>(8);
+        
+        try{
+        q.add(10,2,3,12,12,2018);
+        q.add(1,2,3,6,6,2018);
+        q.add(1,3,3,6,6,2018);
+        q.add(1,2,3,7,7,2018);
+        q.add(1,2,3,8,8,2018);
+        } catch (QueueOverflowException e) 
+        {System.out.println("Add operation failed: " + e);}
+        
+        System.out.println(q.toString());
+        
+        try
+        {q.remove();} catch (QueueUnderflowException e) 
+        {System.out.println("Can't remove head of queue: " + e);}
+        
+        System.out.println(q.toString());
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

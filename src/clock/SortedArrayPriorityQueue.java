@@ -142,7 +142,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                 if(tailIndex == 0)
                 {
                     System.out.println(i);
-                    int priority = 1;
+                    int priority = 0;
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priority);
                     System.out.println(((PriorityItem<T>) storage[i]).getSecond()+"");
                 }
@@ -153,11 +153,11 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                     i = 0;
 
                     while (BREAK != 1)
+                    {
                     if(year > ((PriorityItem<T>) storage[i]).getYear())
                     {
                         priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                         priorityBackup++;
-                        BREAK = 1;
                     }
                     else if(year == ((PriorityItem<T>) storage[i]).getYear())
                     {
@@ -167,7 +167,6 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                             {
                                 priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                 priorityBackup++;
-                                BREAK = 1;
                             }
                             else if(day == ((PriorityItem<T>) storage[i]).getDay())
                             {
@@ -175,7 +174,6 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                                 {
                                     priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                     priorityBackup++;
-                                    BREAK = 1;
                                 }
                                 else if(hour == ((PriorityItem<T>) storage[i]).getHour())
                                 {
@@ -183,33 +181,39 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                                     {
                                         priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                         priorityBackup++;
-                                        BREAK = 1;
                                     }
                                     else if(minute == ((PriorityItem<T>) storage[i]).getMinute())
                                     {
-                                        if(second >= ((PriorityItem<T>) storage[i]).getSecond())
+                                        if(second > ((PriorityItem<T>) storage[i]).getSecond())
                                         {
                                             priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                             priorityBackup++;
-                                            BREAK = 1;
                                         }
                                         else
                                         {
+                                            //priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                            priorityBackup--;
                                             BREAK = 1;
                                         }
                                     }
                                     else
                                     {
+                                        priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                        priorityBackup--;
                                         BREAK = 1;
                                     }
                                 }
                                 else
                                 {
+                                    priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                    priorityBackup--;
                                     BREAK = 1;
                                 }
                             }
                             else
                             {
+                                priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                                priorityBackup--;
                                 BREAK = 1;
                             }
                         }
@@ -217,43 +221,34 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         {
                             priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                             priorityBackup++;
-                            BREAK = 1;
                         }
                         else
                         {
+                            priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                            priorityBackup--;
                             BREAK = 1;
                         }
                     }
                     else
                     {
+                        priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
+                        priorityBackup--;
                         BREAK = 1;
                     }
+                    i++;
+                    if(i == tailIndex)
+                    {
+                    BREAK = 1;
+                    }
+                }
                     
                 i = tailIndex;
-                    while (i > 0 && ((PriorityItem<T>) storage[i - 1]).getPriority() < priorityBackup) {
+                    while (i > 0 && ((PriorityItem<T>) storage[i - 1]).getPriority() > priorityBackup) {
                         storage[i] = storage[i - 1];
                         i = i - 1;
                     }
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
                     System.out.println(((PriorityItem<T>) storage[i]).getPriority()+"");
-
-                    if(priorityBackup == 0)
-                    {
-                        while (i > 0 && ((PriorityItem<T>) storage[i - 1]).getPriority() < priorityBackup) {
-                        storage[i] = storage[i - 1];
-                        i = i - 1;
-                        }
-                        
-                        storage[0] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
-                        System.out.println(((PriorityItem<T>) storage[0]).getPriority()+" Backup = 0");
-                    }
-                    else
-                    {
-
-
-                    }
-
-
 
                 }
             }
@@ -265,10 +260,10 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         if (isEmpty()) {
             throw new QueueUnderflowException();
         } else {
+            System.out.println("Alarm" + storage[0].toString()+ " has been removed");
             for (int i = 0; i < tailIndex; i++) {
                 storage[i] = storage[i + 1];
             }
-            System.out.println("Alarm has gone off and been removed");
             tailIndex = tailIndex - 1;
         }
     }
@@ -285,7 +280,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
             if (i > 0) {
                 result = result + ", ";
             }
-            result = result + storage[i];
+            result = result + storage[i].toString();
         }
         result = result + "]";
         return result;

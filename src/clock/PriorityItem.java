@@ -56,7 +56,7 @@ public class PriorityItem<T> {
     @Override
     public String toString() {
         return "(" + getSecond() + ":" + getMinute() + ":" + getHour() + " " 
-                    + getDay() + "/" + getMonth() + "/" + getYear() +")";
+                    + getDay() + "/" + getMonth() + "/" + getYear() + ")";
     }
     
 }

@@ -22,8 +22,8 @@ public class Model extends Observable {
     }
     
     public void update() {
-        PriorityQueue<Alarm> q;
-        q = new SortedArrayPriorityQueue<>(8);
+            PriorityQueue<Alarm> q;
+            q = new SortedArrayPriorityQueue<>(8);
 //        int sec2 = 1;
 //        int min2 = 17;
 //        int hou2 = 11;
@@ -49,10 +49,10 @@ public class Model extends Observable {
         minute = date.get(Calendar.MINUTE);
         oldSecond = second;
         second = date.get(Calendar.SECOND);
-        System.out.println(q.toString());
+//        System.out.println(q.toString());
         if(q.isEmpty())
         {
-            System.out.println("Empty");
+//            System.out.println("Empty");
         }
         else
         {
@@ -80,7 +80,7 @@ public class Model extends Observable {
                                             AlarmOff dialog = new AlarmOff(frame, true);
                                             dialog.setLocationRelativeTo(frame);
                                             dialog.setVisible(true);
-                                        q.remove();
+                                            q.remove();
                                         } catch (QueueUnderflowException e) 
                                         {
                                         System.out.println("Can't remove head of queue: " + e);
