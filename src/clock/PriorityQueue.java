@@ -11,7 +11,7 @@ package clock;
  *
  * Implementation method is not specified. Implementations may set a maximum
  * allowed number of items, or not.
- * 
+ *
  * @param <T> The type of items stored in the queue.
  */
 public interface PriorityQueue<T> {
@@ -68,16 +68,16 @@ public interface PriorityQueue<T> {
      * For example: [(Fred, 10), (Mabel, 15), (Jane, 5)]
      */
     public String toString();
-    
+
     public int getSec();
-    
+
     public int getMin();
-    
+
     public int getHou();
-    
+
     public int getDay2();
-    
+
     public int getMon();
-    
+
     public int getYea();
 }
