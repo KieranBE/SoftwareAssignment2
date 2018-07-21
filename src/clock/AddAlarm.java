@@ -14,7 +14,10 @@ public class AddAlarm extends javax.swing.JDialog {
     /**
      * Creates new form AddAlarm
      */
-    public AddAlarm(java.awt.Frame parent, boolean modal) {
+    
+    PriorityQueue<Alarm> q;
+    
+    public AddAlarm(java.awt.Frame parent,PriorityQueue<Alarm> q, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -156,8 +159,6 @@ public class AddAlarm extends javax.swing.JDialog {
 
         /* This is used to Add the spinner values to the Sorted Array,
         it added it however i couldnt make it only use it onces*/
-        PriorityQueue<Alarm> q;
-        q = new SortedArrayPriorityQueue<>(8);
         
         /* Sets varibles to the spinner values*/
         int second =(Integer) secSpin.getValue();

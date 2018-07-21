@@ -10,8 +10,9 @@ import java.awt.event.ActionListener;
 public class View implements Observer {
     
     ClockPanel panel;
-        
-    public View(Model model) {
+    PriorityQueue<Alarm> q; 
+
+    public View(Model model, PriorityQueue<Alarm> q) {
         JFrame frame = new JFrame();
         panel = new ClockPanel(model);
         //frame.setContentPane(panel);
@@ -37,7 +38,7 @@ public class View implements Observer {
             
             public void actionPerformed(ActionEvent evt){
                 JFrame frame2 = new JFrame();
-                AddAlarm dialog = new AddAlarm(frame2, true);
+                AddAlarm dialog = new AddAlarm(frame2, q, true);
                 dialog.setLocationRelativeTo(frame2);
                 dialog.setVisible(true);
                 System.out.println("Going to Add Alarm");

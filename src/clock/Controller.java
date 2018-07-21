@@ -11,7 +11,7 @@ public class Controller {
     Model model;
     View view;
     
-    public Controller(Model m, View v) {
+    public Controller(Model m, View v, PriorityQueue<Alarm> q) {
         model = m;
         view = v;
         
