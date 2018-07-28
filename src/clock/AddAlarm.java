@@ -16,6 +16,13 @@ public class AddAlarm extends javax.swing.JDialog {
      */
     
     PriorityQueue<Alarm> q;
+        int second;
+        int minute;
+        int hour;
+        
+        int day;
+        int month;
+        int year;
     
     public AddAlarm(java.awt.Frame parent ,boolean modal) {
         super(parent, modal);
@@ -161,24 +168,50 @@ public class AddAlarm extends javax.swing.JDialog {
         it added it however i couldnt make it only use it onces*/
         /*q = new SortedArrayPriorityQueue<>(8);*/
         /* Sets varibles to the spinner values*/
-        int second =(Integer) secSpin.getValue();
-        int minute =(Integer) minSpin.getValue();
-        int hour =(Integer) houSpin.getValue();
+        second =(Integer) secSpin.getValue();
+        minute =(Integer) minSpin.getValue();
+        hour =(Integer) houSpin.getValue();
         
-        int day =(Integer) daySpin.getValue();
-        int month =(Integer) monSpin.getValue();
-        int year =(Integer) yeaSpin.getValue();
+        day =(Integer) daySpin.getValue();
+        month =(Integer) monSpin.getValue();
+        year =(Integer) yeaSpin.getValue();
         
         System.out.println("Time:" + hour + ":" + minute + ":" + second 
         + " Date: " + day + "/" + month + "/" + year);
         
-        try{
+        dispose();
+        /*try{
         q.add(second, minute, hour, day, month, year);
         } catch (QueueOverflowException e) {
         System.out.println("Add operation failed: " + e);
-        }
+        }*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    public int getSecond(){
+        return second;
+    }
+    
+    public int getMinute(){
+        return minute;
+    }
+    
+    public int getHour(){
+        return hour;
+    }
+    
+    public int getDay(){
+        return day;
+    }
+    
+    public int getMonth(){
+        return month;
+    }
+    
+    public int getYear(){
+        return year;
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /* Closes the JDialog box */
         dispose();

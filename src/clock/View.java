@@ -45,6 +45,8 @@ public class View implements Observer {
                 AddAlarm dialog = new AddAlarm(frame, true);
                 dialog.setLocationRelativeTo(frame);
                 dialog.setVisible(true);
+                int day = dialog.getDay();
+                System.out.println(day);
                 System.out.println("Going to Add Alarm");
             }
             });
