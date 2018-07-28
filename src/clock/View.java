@@ -42,7 +42,7 @@ public class View implements Observer {
         addAlarmButton.addActionListener(new ActionListener(){
             
             public void actionPerformed(ActionEvent evt){
-                AddAlarm dialog = new AddAlarm(frame, q, true);
+                AddAlarm dialog = new AddAlarm(frame, true);
                 dialog.setLocationRelativeTo(frame);
                 dialog.setVisible(true);
                 System.out.println("Going to Add Alarm");

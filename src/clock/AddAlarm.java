@@ -17,7 +17,7 @@ public class AddAlarm extends javax.swing.JDialog {
     
     PriorityQueue<Alarm> q;
     
-    public AddAlarm(java.awt.Frame parent,PriorityQueue<Alarm> q, boolean modal) {
+    public AddAlarm(java.awt.Frame parent ,boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -159,7 +159,7 @@ public class AddAlarm extends javax.swing.JDialog {
 
         /* This is used to Add the spinner values to the Sorted Array,
         it added it however i couldnt make it only use it onces*/
-        
+        /*q = new SortedArrayPriorityQueue<>(8);*/
         /* Sets varibles to the spinner values*/
         int second =(Integer) secSpin.getValue();
         int minute =(Integer) minSpin.getValue();
@@ -187,7 +187,44 @@ public class AddAlarm extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AddAlarm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AddAlarm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AddAlarm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AddAlarm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                AddAlarm dialog = new AddAlarm(new javax.swing.JFrame() ,true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner daySpin;

@@ -80,11 +80,11 @@ public class EditAlarm extends javax.swing.JDialog {
         q = new SortedArrayPriorityQueue<>(8);
         
         try{
-        q.add(10,2,3,12,12,2018);
-        q.add(1,2,3,6,6,2018);
-        q.add(1,3,3,6,6,2018);
-        q.add(1,2,3,7,7,2018);
-        q.add(1,2,3,8,8,2018);
+        q.add(10,2,3,12,12,2019);
+        q.add(1,2,3,6,6,2019);
+        q.add(1,3,3,6,6,2019);
+        q.add(1,2,3,7,7,2019);
+        q.add(1,2,3,8,8,2019);
         } catch (QueueOverflowException e) 
         {System.out.println("Add operation failed: " + e);}
         
