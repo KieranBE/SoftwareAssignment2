@@ -13,7 +13,7 @@ public class View implements Observer {
     PriorityQueue<Alarm> q; 
 
     public View(Model model, PriorityQueue<Alarm> q) {
-        JFrame frame = new JFrame();
+        final JFrame frame = new JFrame();
         panel = new ClockPanel(model);
         //frame.setContentPane(panel);
         frame.setTitle("Java Clock");
@@ -37,9 +37,8 @@ public class View implements Observer {
         addAlarmButton.addActionListener(new ActionListener(){
             
             public void actionPerformed(ActionEvent evt){
-                JFrame frame2 = new JFrame();
-                AddAlarm dialog = new AddAlarm(frame2, q, true);
-                dialog.setLocationRelativeTo(frame2);
+                AddAlarm dialog = new AddAlarm(frame, q, true);
+                dialog.setLocationRelativeTo(frame);
                 dialog.setVisible(true);
                 System.out.println("Going to Add Alarm");
             }
@@ -54,9 +53,8 @@ public class View implements Observer {
         editButton.addActionListener(new ActionListener(){
 
         public void actionPerformed(ActionEvent evt){
-            JFrame frame3 = new JFrame();
-            EditAlarm dialog = new EditAlarm(frame3, true);
-            dialog.setLocationRelativeTo(frame3);
+            EditAlarm dialog = new EditAlarm(frame, true);
+            dialog.setLocationRelativeTo(frame);
             dialog.setVisible(true);
             System.out.println("Going to Edit Alarms");
         }
@@ -79,9 +77,8 @@ public class View implements Observer {
         viewButton.addActionListener(new ActionListener(){
 
         public void actionPerformed(ActionEvent evt){
-            JFrame frame4 = new JFrame();
-            ViewAlarm dialog = new ViewAlarm(frame4, true);
-            dialog.setLocationRelativeTo(frame4);
+            ViewAlarm dialog = new ViewAlarm(frame, true);
+            dialog.setLocationRelativeTo(frame);
             dialog.setVisible(true);
             System.out.println("Going to View Alarms");
         }
