@@ -40,14 +40,29 @@ public class View implements Observer {
         pane.add(addAlarmButton, BorderLayout.PAGE_START);
         
         addAlarmButton.addActionListener(new ActionListener(){
-            
+                       
             public void actionPerformed(ActionEvent evt){
-                AddAlarm dialog = new AddAlarm(frame, true);
+                AddAlarm dialog = new AddAlarm(frame, q,true);
                 dialog.setLocationRelativeTo(frame);
                 dialog.setVisible(true);
+                
+                int second = dialog.getSecond();
+                int minute = dialog.getMinute();
+                int hour = dialog.getHour();
                 int day = dialog.getDay();
-                System.out.println(day);
+                int month = dialog.getMonth();
+                int year = dialog.getYear();
+                
+                if (year > 0){
+                try{
+                    q.add(second, minute, hour, day, month, year);
+                    } catch (QueueOverflowException e) {
+                    System.out.println("Add operation failed: " + e);
+                }
+                System.out.println("Time:" + hour + ":" + minute + ":" + second 
+                + " Date: " + day + "/" + month + "/" + year);
                 System.out.println("Going to Add Alarm");
+                }
             }
             });
         

@@ -24,7 +24,7 @@ public class AddAlarm extends javax.swing.JDialog {
         int month;
         int year;
     
-    public AddAlarm(java.awt.Frame parent ,boolean modal) {
+    public AddAlarm(java.awt.Frame parent, PriorityQueue<Alarm> q ,boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -176,8 +176,8 @@ public class AddAlarm extends javax.swing.JDialog {
         month =(Integer) monSpin.getValue();
         year =(Integer) yeaSpin.getValue();
         
-        System.out.println("Time:" + hour + ":" + minute + ":" + second 
-        + " Date: " + day + "/" + month + "/" + year);
+        //System.out.println("Time:" + hour + ":" + minute + ":" + second 
+        //+ " Date: " + day + "/" + month + "/" + year);
         
         dispose();
         /*try{
@@ -187,7 +187,6 @@ public class AddAlarm extends javax.swing.JDialog {
         }*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
     public int getSecond(){
         return second;
     }
