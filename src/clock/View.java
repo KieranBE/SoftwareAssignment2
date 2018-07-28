@@ -12,6 +12,11 @@ public class View implements Observer {
     ClockPanel panel;
     PriorityQueue<Alarm> q; 
 
+    /**
+     *
+     * @param model
+     * @param q
+     */
     public View(Model model, PriorityQueue<Alarm> q) {
         final JFrame frame = new JFrame();
         panel = new ClockPanel(model);
