@@ -58,11 +58,11 @@ public class View implements Observer {
                     q2.add(second, minute, hour, day, month, year);
                     } catch (QueueOverflowException e) {
                     System.out.println("Add operation failed: " + e);
-                    q2.toString();
                 }
-                System.out.println("Time:" + hour + ":" + minute + ":" + second 
+                /*System.out.println("Time:" + hour + ":" + minute + ":" + second 
                 + " Date: " + day + "/" + month + "/" + year);
-                System.out.println("Going to Add Alarm");
+                System.out.println("Going to Add Alarm");*/
+                System.out.println(q2.toString());
                 }
             }
             });
@@ -101,6 +101,7 @@ public class View implements Observer {
 
         public void actionPerformed(ActionEvent evt){
             ViewAlarm dialog = new ViewAlarm(frame, true);
+            dialog.PassQueue(q2);
             dialog.setLocationRelativeTo(frame);
             dialog.setVisible(true);
             System.out.println("Going to View Alarms");

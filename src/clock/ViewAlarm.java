@@ -14,6 +14,7 @@ public class ViewAlarm extends javax.swing.JDialog {
     /**
      * Creates new form ViewAlarm
      */
+    PriorityQueue<Alarm> q2;
     public ViewAlarm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -74,8 +75,14 @@ public class ViewAlarm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void PassQueue(PriorityQueue<Alarm> q){
+    q2 = q;
+    System.out.println("Test");
+    System.out.println(q2.toString());
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        PriorityQueue<Alarm> q;
+    System.out.println(q2.toString());    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
