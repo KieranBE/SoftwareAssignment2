@@ -24,7 +24,7 @@ public class AddAlarm extends javax.swing.JDialog {
         int month;
         int year;
     
-    public AddAlarm(java.awt.Frame parent, PriorityQueue<Alarm> q ,boolean modal) {
+    public AddAlarm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }

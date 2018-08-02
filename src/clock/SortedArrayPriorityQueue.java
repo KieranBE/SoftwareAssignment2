@@ -124,6 +124,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                 if (tailIndex == 0) {
                     int priority = 0;
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priority);
+                    System.out.println("1");
                 } else {
                     
                     /* Uses priority backup as a placeholder and break to get out of the loop*/
@@ -200,6 +201,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         i = i - 1;
                     }
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
+                    System.out.println("2");
                 }
             }
         }

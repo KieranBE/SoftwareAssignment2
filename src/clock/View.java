@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class View implements Observer {
     
     ClockPanel panel;
-    PriorityQueue<Alarm> q; 
+    PriorityQueue<Alarm> q2; 
 
     /**
      *
@@ -23,7 +23,7 @@ public class View implements Observer {
         //frame.setContentPane(panel);
         frame.setTitle("Java Clock");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        q2 = q;
         // Start of border layout code
         
         // I've just put a single button in each of the border positions:
@@ -42,7 +42,7 @@ public class View implements Observer {
         addAlarmButton.addActionListener(new ActionListener(){
                        
             public void actionPerformed(ActionEvent evt){
-                AddAlarm dialog = new AddAlarm(frame, q,true);
+                AddAlarm dialog = new AddAlarm(frame, true);
                 dialog.setLocationRelativeTo(frame);
                 dialog.setVisible(true);
                 
@@ -55,9 +55,10 @@ public class View implements Observer {
                 
                 if (year > 0){
                 try{
-                    q.add(second, minute, hour, day, month, year);
+                    q2.add(second, minute, hour, day, month, year);
                     } catch (QueueOverflowException e) {
                     System.out.println("Add operation failed: " + e);
+                    q2.toString();
                 }
                 System.out.println("Time:" + hour + ":" + minute + ":" + second 
                 + " Date: " + day + "/" + month + "/" + year);
