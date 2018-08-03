@@ -95,6 +95,7 @@ public class View implements Observer {
             dialog.PassQueue(q2);
             dialog.setLocationRelativeTo(frame);
             dialog.setVisible(true);
+            q2 = dialog.GetQueue();
             System.out.println("Going to Save/Load Alarms");
         }
         });

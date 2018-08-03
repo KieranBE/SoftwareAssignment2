@@ -281,6 +281,65 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
            tailIndex--;
         }
     }
+    
+    public String saveCal(){
+        String AlarmString = "";
+        
+        int tailIndex2 = tailIndex;
+        for (int i = 0; i <= tailIndex2; i++) {
+            
+                AlarmString = AlarmString + "ALARM:";
+                
+                AlarmString = AlarmString + ((PriorityItem<T>) storage[i]).getYear();
+                
+                if(((PriorityItem<T>) storage[i]).getMonth() < 10){
+                AlarmString = AlarmString + "0" + ((PriorityItem<T>) storage[i]).getMonth();
+                }
+                else
+                {
+                AlarmString = AlarmString + ((PriorityItem<T>) storage[i]).getMonth();
+                }
+                
+                if(((PriorityItem<T>) storage[i]).getDay() < 10){
+                AlarmString = AlarmString + "0" + ((PriorityItem<T>) storage[i]).getDay();
+                }
+                else
+                {
+                AlarmString = AlarmString + ((PriorityItem<T>) storage[i]).getDay();
+                }
+                
+                AlarmString = AlarmString + "T";
+                
+                if(((PriorityItem<T>) storage[i]).getHour() < 10){
+                AlarmString = AlarmString + "0" + ((PriorityItem<T>) storage[i]).getHour();
+                }
+                else
+                {
+                AlarmString = AlarmString + ((PriorityItem<T>) storage[i]).getHour();
+                }
+                
+                if(((PriorityItem<T>) storage[i]).getMinute() < 10){
+                AlarmString = AlarmString + "0" + ((PriorityItem<T>) storage[i]).getMinute();
+                }
+                else
+                {
+                AlarmString = AlarmString + ((PriorityItem<T>) storage[i]).getMinute();
+                }
+                
+                if(((PriorityItem<T>) storage[i]).getSecond() < 10){
+                AlarmString = AlarmString + "0" + ((PriorityItem<T>) storage[i]).getSecond();
+                }
+                else
+                {
+                AlarmString = AlarmString + ((PriorityItem<T>) storage[i]).getSecond();
+                }
+                
+                AlarmString = AlarmString + "Z" + "\n";
+            }
+            tailIndex2--;
+        
+        return AlarmString;
+    }
 
     /* These are used to get the each variable by its own*/
     public int getSec() {

@@ -73,6 +73,8 @@ public interface PriorityQueue<T> {
     
     public void deleteSelected(int i);
     
+    public String saveCal();
+    
     public int length();
     
     public int getSec();

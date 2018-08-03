@@ -76,8 +76,30 @@ public class SaveLoad extends javax.swing.JDialog {
     q2 = q;
     }
     
+    public PriorityQueue<Alarm> GetQueue(){
+    return q2;
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        String BeginCal = "BEGIN:VCALENDAR";
+        String Version = "VERSION:2.0";
+        String ID = "PRODID:-//KieranEvans//Clock//EN";
+        String BeginEv = "BEGIN:VEVENT";
+        String UserID = "UID:08012568@uhi.ac.uk";
+        String Stamp = "DTSTAMP:19970610T172345Z";
+        String Start = "DTSTART:19970714T170000Z";
+        String Summary = "SUMMARY:Alarms";
+        String EndEv = "END:VEVENT";
+        String EndCal = "END:VCALENDAR";
+        
+        String ICalendar = BeginCal + "\n" + Version + "\n" + ID + "\n" + 
+            BeginEv + "\n" + UserID + "\n" + Stamp + "\n" + Start + "\n" + 
+            Summary + "\n" + q2.saveCal() + EndEv + "\n" + EndCal ; 
+        
+        System.out.println(ICalendar);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
