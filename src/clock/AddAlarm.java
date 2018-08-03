@@ -15,7 +15,7 @@ public class AddAlarm extends javax.swing.JDialog {
      * Creates new form AddAlarm
      */
     
-    PriorityQueue<Alarm> q;
+    PriorityQueue<Alarm> q2;
         int second;
         int minute;
         int hour;
@@ -162,6 +162,10 @@ public class AddAlarm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void PassQueue(PriorityQueue<Alarm> q){
+    q2 = q;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         /* This is used to Add the spinner values to the Sorted Array,
@@ -179,37 +183,18 @@ public class AddAlarm extends javax.swing.JDialog {
         //System.out.println("Time:" + hour + ":" + minute + ":" + second 
         //+ " Date: " + day + "/" + month + "/" + year);
         
-        dispose();
-        /*try{
-        q.add(second, minute, hour, day, month, year);
+        try{
+        q2.add(second, minute, hour, day, month, year);
         } catch (QueueOverflowException e) {
         System.out.println("Add operation failed: " + e);
-        }*/
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    public int getSecond(){
-        return second;
+    public PriorityQueue<Alarm> getQueue(){
+        return q2;
     }
     
-    public int getMinute(){
-        return minute;
-    }
     
-    public int getHour(){
-        return hour;
-    }
-    
-    public int getDay(){
-        return day;
-    }
-    
-    public int getMonth(){
-        return month;
-    }
-    
-    public int getYear(){
-        return year;
-    }
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /* Closes the JDialog box */

@@ -46,28 +46,17 @@ public class View implements Observer {
                        
             public void actionPerformed(ActionEvent evt){
                 AddAlarm dialog = new AddAlarm(frame, true);
+                dialog.PassQueue(q2);
                 dialog.setLocationRelativeTo(frame);
                 dialog.setVisible(true);
-                
-                int second = dialog.getSecond();
-                int minute = dialog.getMinute();
-                int hour = dialog.getHour();
-                int day = dialog.getDay();
-                int month = dialog.getMonth();
-                int year = dialog.getYear();
-                
-                if (year > 0){
-                try{
-                    q2.add(second, minute, hour, day, month, year);
-                    } catch (QueueOverflowException e) {
-                    System.out.println("Add operation failed: " + e);
-                }
+                q2 = dialog.getQueue();
+
                 /*System.out.println("Time:" + hour + ":" + minute + ":" + second 
                 + " Date: " + day + "/" + month + "/" + year);
                 System.out.println("Going to Add Alarm");*/
                 System.out.println(q2.toString());
                 AlarmUpdate();
-                }
+                
             }
             });
         
