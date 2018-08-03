@@ -23,6 +23,7 @@ public class SaveLoad extends javax.swing.JDialog {
 
     /**
      * Creates new form SaveLoad
+     * Also creates the PQ's, frame and sets the load check
      */
     PriorityQueue<Alarm> q2;
     PriorityQueue<Alarm> q;
@@ -87,15 +88,24 @@ public class SaveLoad extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void PassQueue(PriorityQueue<Alarm> q){
+        /**
+         * Takes the PriorityQueue from the previous class
+         */
         q2 = q;
     }
     
     public PriorityQueue<Alarm> GetQueue(){
+        /**
+         * Pass the new PriorityQueue to the previous class
+         */
         return q;
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+        /**
+         * Creates each string part for the Calendar
+         */
         String BeginCal = "BEGIN:VCALENDAR";
         String Version = "VERSION:2.0";
         String ID = "PRODID:-//KieranEvans//Clock//EN";
@@ -107,10 +117,16 @@ public class SaveLoad extends javax.swing.JDialog {
         String EndEv = "END:VEVENT";
         String EndCal = "END:VCALENDAR";
         
+        /**
+         * Adds them all together
+         */
         String ICalendar = BeginCal + "\n" + Version + "\n" + ID + "\n" + 
         BeginEv + "\n" + UserID + "\n" + Stamp + "\n" + Start + "\n" + 
         Summary + "\n" + q2.saveCal() + EndEv + "\n" + EndCal ; 
         
+        /**
+         * Opens the file chooser to save a file
+         */
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Pick a file to overrite or save a new file");    
         
@@ -118,6 +134,10 @@ public class SaveLoad extends javax.swing.JDialog {
 
         if (pass == JFileChooser.APPROVE_OPTION) 
         {
+             /**
+             * Sets the fileName to the selected file name 
+             * then adds .ics to the end
+             */
             File fileName = fileChooser.getSelectedFile();
             String nameOfFile = fileName.getAbsolutePath() + ".ics";
             try 
@@ -129,6 +149,10 @@ public class SaveLoad extends javax.swing.JDialog {
                     file.createNewFile();
                 }
 
+                /**
+                * Creates the file and buffered writer
+                * then writes the previous string to the file
+                */
                 FileWriter fw = new FileWriter(file.getAbsoluteFile());
                 BufferedWriter bw = new BufferedWriter(fw);
                 bw.write(ICalendar);
@@ -144,14 +168,22 @@ public class SaveLoad extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
+        /**
+         * Creates the new queue
+         */
         q = new SortedArrayPriorityQueue<>(8);
         
+        /**
+         * Sets the location to load
+         */
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Pick a file to load");    
         
         int pass = fileChooser.showOpenDialog(frame);
 
-        
+        /**
+         * Checks if the user selected a file
+         */
         if (pass == JFileChooser.APPROVE_OPTION) 
         {
             File fileName = fileChooser.getSelectedFile();
@@ -162,27 +194,43 @@ public class SaveLoad extends javax.swing.JDialog {
             in = new Scanner(fileName);
             while(in.hasNext())
             {
+                /**
+                 * Checks for lines that have "ALARM" in it
+                 */
                 String line=in.nextLine();
                 if(line.contains("ALARM"))
                 {  
+                    /**
+                    * Removes "ALARM:","Z", and "T" from the stored part
+                    */
                     alarm = line.replace("ALARM:","");
                     alarm = alarm.replace("Z","");
                     alarm = alarm.replace("T","");
+                    
+                    /**
+                    * Sets each correct variable to each part of the alarm
+                    */
                     int year = Integer.parseInt(alarm.substring(0, 4));
                     int month = Integer.parseInt(alarm.substring(4, 6));
                     int day = Integer.parseInt(alarm.substring(6, 8));
                     int hour = Integer.parseInt(alarm.substring(8, 10));
                     int minute = Integer.parseInt(alarm.substring(10, 12));
                     int second = Integer.parseInt(alarm.substring(12, 14));
+                    
                     System.out.println(year + "/" + month + "/" + day  + " " +hour  + ":" +minute  + ":" +second);
+                    
                     try{
-                    q.add(second, minute, hour, day, month, year);
+                        q.add(second, minute, hour, day, month, year);
                     } catch (QueueOverflowException e) {
-                    System.out.println("Add operation failed: " + e);
+                        System.out.println("Add operation failed: " + e);
                     }
                 }   
             }
             //System.out.println(alarm);
+            
+            /**
+            * sets LoadCheck to 1, if load works, then closes
+            */
             loadCheck = 1;
             dispose();
         } 
@@ -194,6 +242,9 @@ public class SaveLoad extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
  
     public int getLoadCheck(){
+        /**
+        * Returns load check
+        */
         return loadCheck;
     }
     

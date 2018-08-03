@@ -67,6 +67,9 @@ public class AlarmAdded extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Closes the dialog box
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -163,7 +163,9 @@ public class AddAlarm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    /**
+    * Receives the queue from the previous class
+    */
     public void PassQueue(PriorityQueue<Alarm> q){
         q2 = q;
     }
@@ -191,11 +193,12 @@ public class AddAlarm extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+    * Returns the new queue
+    */
     public PriorityQueue<Alarm> getQueue(){
         return q2;
     }
-    
-    
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         /* Closes the JDialog box */

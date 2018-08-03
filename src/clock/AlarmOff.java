@@ -76,6 +76,9 @@ public class AlarmOff extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Passes the queue, then changes the value of text to the string "text"
+    */
     public void PassQueue(PriorityQueue<Alarm> q){
         q2 = q;
         String text = "Alarm ";
@@ -89,6 +92,9 @@ public class AlarmOff extends javax.swing.JDialog {
         jTextArea1.append(text);
     }
     
+    /**
+    * Closes dialog
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

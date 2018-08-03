@@ -85,13 +85,17 @@ public class ViewAlarm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void PassQueue(PriorityQueue<Alarm> q){
-    /*Passes*/
-    q2 = q;
-    
-    jTextArea1.append(q2.toString());
+        /**
+        * Passes the entire queue, then sets the text area to the entire queue
+        */
+        q2 = q;
+        jTextArea1.append(q2.toString());
     }
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        /**
+        * Closes frame
+        */
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -39,6 +39,11 @@ public class View implements Observer {
         
         Container pane = frame.getContentPane();
         
+        /**
+        * Creates button, then pass queue to new dialog box 
+        * it changes the queue to the new queue
+        * also then updates the alarm list for the model
+        */
         JButton addAlarmButton = new JButton("Add Alarm");
         pane.add(addAlarmButton, BorderLayout.PAGE_START);
         
@@ -50,72 +55,80 @@ public class View implements Observer {
                 dialog.setLocationRelativeTo(frame);
                 dialog.setVisible(true);
                 q2 = dialog.getQueue();
-
-                /*System.out.println("Time:" + hour + ":" + minute + ":" + second 
-                + " Date: " + day + "/" + month + "/" + year);
-                System.out.println("Going to Add Alarm");*/
-                System.out.println(q2.toString());
+                //System.out.println(q2.toString());
                 AlarmUpdate();
                 
             }
-            });
-        
-        
-        
+        });
+         
         panel.setPreferredSize(new Dimension(200, 200));
         pane.add(panel, BorderLayout.CENTER);
-         
+        
+        /**
+        * Creates button, then pass queue to new dialog box
+        * Checks when it returns if the user changed it, 
+        * if they did it overwrites the save
+        */
         JButton editButton = new JButton("Edit Alarms");
         pane.add(editButton, BorderLayout.LINE_START);
          
         editButton.addActionListener(new ActionListener(){
 
-        public void actionPerformed(ActionEvent evt){
-            int delete = 0;
-            
-            while(delete != 1){
-            EditAlarm dialog = new EditAlarm(frame, true);
-            dialog.PassQueue(q2);
-            dialog.setLocationRelativeTo(frame);
-            dialog.setVisible(true);
-            delete = dialog.getDelete();
-            q2 = dialog.getQueue();
-            System.out.println("Going to Edit Alarms");
+            public void actionPerformed(ActionEvent evt){
+                int delete = 0;
+
+                while(delete != 1){
+                EditAlarm dialog = new EditAlarm(frame, true);
+                dialog.PassQueue(q2);
+                dialog.setLocationRelativeTo(frame);
+                dialog.setVisible(true);
+                delete = dialog.getDelete();
+                q2 = dialog.getQueue();
+                System.out.println("Going to Edit Alarms");
+                }
             }
-        }
         });
         
+        
+        /**
+        * Creates button, then pass queue to new dialog box
+        * Checks when it returns if the user loaded, 
+        * if the did load it sets the queue to the loaded queue
+        */
         JButton saveButton = new JButton("Save or Load Alarms");
         pane.add(saveButton, BorderLayout.PAGE_END);
          
         saveButton.addActionListener(new ActionListener(){
 
-        public void actionPerformed(ActionEvent evt){
-            SaveLoad dialog = new SaveLoad(frame, true);
-            dialog.PassQueue(q2);
-            dialog.setLocationRelativeTo(frame);
-            dialog.setVisible(true);
-            int LoadCheck = dialog.getLoadCheck();
-            if(LoadCheck == 1){
-            q2 = dialog.GetQueue();
-            System.out.println("New Queue");
+            public void actionPerformed(ActionEvent evt){
+                SaveLoad dialog = new SaveLoad(frame, true);
+                dialog.PassQueue(q2);
+                dialog.setLocationRelativeTo(frame);
+                dialog.setVisible(true);
+                int LoadCheck = dialog.getLoadCheck();
+                if(LoadCheck == 1){
+                    q2 = dialog.GetQueue();
+                }
+                System.out.println("Going to Save/Load Alarms");
             }
-            System.out.println("Going to Save/Load Alarms");
-        }
         });
         
+        /**
+        * Creates button, then pass queue to new dialog box
+        * doesn't need to update queue since its not changed
+        */
         JButton viewButton = new JButton("View Alarms");
         pane.add(viewButton, BorderLayout.LINE_END);
         
         viewButton.addActionListener(new ActionListener(){
 
-        public void actionPerformed(ActionEvent evt){
-            ViewAlarm dialog = new ViewAlarm(frame, true);
-            dialog.PassQueue(q2);
-            dialog.setLocationRelativeTo(frame);
-            dialog.setVisible(true);
-            System.out.println("Going to View Alarms");
-        }
+            public void actionPerformed(ActionEvent evt){
+                ViewAlarm dialog = new ViewAlarm(frame, true);
+                dialog.PassQueue(q2);
+                dialog.setLocationRelativeTo(frame);
+                dialog.setVisible(true);
+                System.out.println("Going to View Alarms");
+            }
         });
         
         // End of borderlayout code

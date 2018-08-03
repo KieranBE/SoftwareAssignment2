@@ -230,6 +230,9 @@ public class EditAlarm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Passes the queue, sets all the text and button visibility to false
+    */
     public void PassQueue(PriorityQueue<Alarm> q){
         q2 = q;
 
@@ -251,14 +254,25 @@ public class EditAlarm extends javax.swing.JDialog {
         jButton8.setVisible(false);
         jLabel1.setVisible(false);
         jLabel2.setVisible(false);
-
+        
+        /**
+        * Gets the length of the queue
+        */
         int amount = q2.length();
 
+        /**
+        * If the queue is empty it turns the empty label visibility to true
+        */
         if(amount == -1){
             jLabel2.setVisible(true);
         }
         else
         {
+            /**
+            * Sets label to let the user know alarms exist
+            * sets visibility for text and buttons to true
+            * if the amount is the right amount
+            */
             jLabel1.setVisible(true);
             if(amount >= 0){
                 jTextField1.setText(q2.singleString(0));
@@ -303,14 +317,23 @@ public class EditAlarm extends javax.swing.JDialog {
         }
     }
     
+    /**
+    * Has a loop to reload the frame when the user deletes an alarm
+    */
     public int getDelete(){
         return delete;
     }
     
+    /**
+    * Returns the new queue
+    */
     public PriorityQueue<Alarm> getQueue(){
         return q2;
     }
     
+    /**
+    * Removes the head if the top alarm is removed
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             q2.remove();
@@ -320,6 +343,9 @@ public class EditAlarm extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+    * Go back button, sets delete to 1 to get out loop
+    */
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         delete = 1;
         dispose();
@@ -329,36 +355,57 @@ public class EditAlarm extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    /**
+    * Passes the position of the alarm to be deleted
+    */
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         q2.deleteSelected(7);
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    /**
+    * Passes the position of the alarm to be deleted
+    */
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         q2.deleteSelected(6);
         dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    /**
+    * Passes the position of the alarm to be deleted
+    */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         q2.deleteSelected(5);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    /**
+    * Passes the position of the alarm to be deleted
+    */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         q2.deleteSelected(4);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    /**
+    * Passes the position of the alarm to be deleted
+    */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         q2.deleteSelected(3);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    /**
+    * Passes the position of the alarm to be deleted
+    */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         q2.deleteSelected(2);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+    * Passes the position of the alarm to be deleted
+    */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         q2.deleteSelected(1);
         dispose();
