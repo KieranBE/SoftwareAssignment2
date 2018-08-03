@@ -6,6 +6,7 @@
 package clock;
 
 /**
+ * This is lets the user View all the alarms.
  *
  * @author Kieran
  */
@@ -84,6 +85,7 @@ public class ViewAlarm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void PassQueue(PriorityQueue<Alarm> q){
+    /*Passes*/
     q2 = q;
     
     jTextArea1.append(q2.toString());

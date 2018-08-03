@@ -6,6 +6,7 @@
 package clock;
 
 /**
+ * This is the pop-up to let the user know the alarm has not been added.
  *
  * @author Kieran
  */

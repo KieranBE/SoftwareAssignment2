@@ -6,6 +6,7 @@
 package clock;
 
 /**
+ * Used to add the alarm to the queue, also lets the user enter their own time.
  *
  * @author Kieran
  */

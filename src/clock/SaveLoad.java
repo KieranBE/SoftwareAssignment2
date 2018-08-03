@@ -13,7 +13,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+
 /**
+ * This is to let the user save or load alarms.
  *
  * @author Kieran
  */

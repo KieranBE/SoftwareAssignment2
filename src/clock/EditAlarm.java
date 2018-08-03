@@ -6,6 +6,7 @@
 package clock;
 
 /**
+ * This is allows the user to delete alarms.
  *
  * @author Kieran
  */
