@@ -183,11 +183,14 @@ public class AddAlarm extends javax.swing.JDialog {
         //System.out.println("Time:" + hour + ":" + minute + ":" + second 
         //+ " Date: " + day + "/" + month + "/" + year);
         
+        System.out.println(second+":"+minute+":"+hour+" "+day+"/"+month+"/"+year);
+        
         try{
         q2.add(second, minute, hour, day, month, year);
         } catch (QueueOverflowException e) {
         System.out.println("Add operation failed: " + e);
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public PriorityQueue<Alarm> getQueue(){

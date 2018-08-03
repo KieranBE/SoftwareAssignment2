@@ -96,10 +96,10 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
 
                     } else if (day == date.get(Calendar.DAY_OF_MONTH)) {
 
-                        if (hour > date.get(Calendar.HOUR)) {
+                        if (hour > date.get(Calendar.HOUR_OF_DAY)) {
                             gateCode = 1;
 
-                        } else if (hour == date.get(Calendar.HOUR)) {
+                        } else if (hour == date.get(Calendar.HOUR_OF_DAY)) {
 
                             if (minute > date.get(Calendar.MINUTE)) {
                                 gateCode = 1;
@@ -119,7 +119,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                     gateCode = 1;
                 }
             }
-
+            System.out.println(gateCode);
             if (gateCode == 1) {
                 if (tailIndex == 0) {
                     int priority = 0;
@@ -201,8 +201,11 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         i = i - 1;
                     }
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
-                    System.out.println("2");
                 }
+            }
+            else
+            {
+                tailIndex--;
             }
         }
     }
