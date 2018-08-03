@@ -261,6 +261,10 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
     public int length(){
         return tailIndex;
     }
+    
+    public void deleteSelected(int i){
+    
+    }
 
     /* These are used to get the each variable by its own*/
     public int getSec() {

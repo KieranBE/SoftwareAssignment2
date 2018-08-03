@@ -71,6 +71,8 @@ public interface PriorityQueue<T> {
 
     public String singleString(int i);
     
+    public void deleteSelected(int i);
+    
     public int length();
     
     public int getSec();
