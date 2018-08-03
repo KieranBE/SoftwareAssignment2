@@ -14,6 +14,7 @@ public class EditAlarm extends javax.swing.JDialog {
     /**
      * Creates new form EditAlarm
      */
+    PriorityQueue<Alarm> q2;
     public EditAlarm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -30,6 +31,14 @@ public class EditAlarm extends javax.swing.JDialog {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -47,6 +56,22 @@ public class EditAlarm extends javax.swing.JDialog {
             }
         });
 
+        jTextField1.setEditable(false);
+
+        jTextField2.setEditable(false);
+
+        jTextField3.setEditable(false);
+
+        jTextField4.setEditable(false);
+
+        jTextField5.setEditable(false);
+
+        jTextField6.setEditable(false);
+
+        jTextField7.setEditable(false);
+
+        jTextField8.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,11 +82,39 @@ public class EditAlarm extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(59, 59, 59))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField2)
+                    .addComponent(jTextField3)
+                    .addComponent(jTextField5)
+                    .addComponent(jTextField6)
+                    .addComponent(jTextField7)
+                    .addComponent(jTextField8))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(232, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -71,30 +124,67 @@ public class EditAlarm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void PassQueue(PriorityQueue<Alarm> q){
+    q2 = q;
+    
+    jTextField1.setVisible(false);
+    jTextField2.setVisible(false);
+    jTextField3.setVisible(false);
+    jTextField4.setVisible(false);
+    jTextField5.setVisible(false);
+    jTextField6.setVisible(false);
+    jTextField7.setVisible(false);
+    jTextField8.setVisible(false);
+    
+    int amount = q2.length();
+    
+    if(amount == -1){}
+    else
+    {
+        if(amount >= 0){
+        jTextField1.setText(q2.singleString(0));
+        jTextField1.setVisible(true);
+        }
+        if(amount >= 1){
+        jTextField2.setText(q2.singleString(1));
+        jTextField2.setVisible(true);
+        }
+        if(amount >= 2){
+        jTextField3.setText(q2.singleString(2));
+        jTextField3.setVisible(true);
+        }
+        if(amount >= 3){
+        jTextField4.setText(q2.singleString(3));
+        jTextField4.setVisible(true);
+        }
+        if(amount >= 4){
+        jTextField5.setText(q2.singleString(4));
+        jTextField5.setVisible(true);
+        }
+        if(amount >= 5){
+        jTextField6.setText(q2.singleString(5));
+        jTextField6.setVisible(true);
+        }
+        if(amount >= 6){
+        jTextField7.setText(q2.singleString(6));
+        jTextField7.setVisible(true);
+        }
+        if(amount >= 7){
+        jTextField8.setText(q2.singleString(7));
+        jTextField8.setVisible(true);
+        }
+    }
+    
+    }
+    
+    
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PriorityQueue<Alarm> q;
-        q = new SortedArrayPriorityQueue<>(8);
-        
-        try{
-        q.add(10,2,3,12,12,2019);
-        q.add(1,2,3,6,6,2019);
-        q.add(1,3,3,6,6,2019);
-        q.add(1,2,3,7,7,2019);
-        q.add(1,2,3,8,8,2019);
-        } catch (QueueOverflowException e) 
-        {System.out.println("Add operation failed: " + e);}
-        
-        System.out.println(q.toString());
-        
-        try
-        {q.remove();} catch (QueueUnderflowException e) 
-        {System.out.println("Can't remove head of queue: " + e);}
-        
-        System.out.println(q.toString());
+
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -143,5 +233,13 @@ public class EditAlarm extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

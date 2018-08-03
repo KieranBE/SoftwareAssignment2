@@ -69,6 +69,10 @@ public interface PriorityQueue<T> {
      */
     public String toString();
 
+    public String singleString(int i);
+    
+    public int length();
+    
     public int getSec();
 
     public int getMin();

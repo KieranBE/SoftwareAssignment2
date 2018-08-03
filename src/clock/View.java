@@ -72,6 +72,7 @@ public class View implements Observer {
 
         public void actionPerformed(ActionEvent evt){
             EditAlarm dialog = new EditAlarm(frame, true);
+            dialog.PassQueue(q2);
             dialog.setLocationRelativeTo(frame);
             dialog.setVisible(true);
             System.out.println("Going to Edit Alarms");

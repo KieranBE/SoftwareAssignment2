@@ -238,6 +238,14 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         result = result + "";
         return result;
     }
+    
+    public String singleString(int i){
+        return storage[i].toString();
+    }
+    
+    public int length(){
+        return tailIndex;
+    }
 
     /* These are used to get the each variable by its own*/
     public int getSec() {
