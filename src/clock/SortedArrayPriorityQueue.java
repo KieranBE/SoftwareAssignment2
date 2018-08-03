@@ -254,16 +254,32 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         return result;
     }
     
+    @Override
     public String singleString(int i){
         return storage[i].toString();
     }
     
+    @Override
     public int length(){
         return tailIndex;
     }
     
+    @Override
     public void deleteSelected(int i){
     
+        int i2 = i;
+        int tailIndex2 = tailIndex;
+        System.out.println(i2);
+        for (int count = i2; count < tailIndex2 ; count++) 
+        {
+            System.out.println("test");
+            storage[count] = storage[count + 1];
+            tailIndex--;
+        }
+        if(i2 == tailIndex2){
+           storage[i2] = storage[i2 + 1];
+           tailIndex--;
+        }
     }
 
     /* These are used to get the each variable by its own*/

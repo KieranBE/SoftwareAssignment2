@@ -71,11 +71,17 @@ public class View implements Observer {
         editButton.addActionListener(new ActionListener(){
 
         public void actionPerformed(ActionEvent evt){
+            int delete = 0;
+            
+            while(delete != 1){
             EditAlarm dialog = new EditAlarm(frame, true);
             dialog.PassQueue(q2);
             dialog.setLocationRelativeTo(frame);
             dialog.setVisible(true);
+            delete = dialog.getDelete();
+            q2 = dialog.getQueue();
             System.out.println("Going to Edit Alarms");
+            }
         }
         });
         
