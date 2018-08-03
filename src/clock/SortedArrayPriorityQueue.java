@@ -70,7 +70,6 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
     @Override
     public void add(int second, int minute, int hour, int day, int month, int year) throws QueueOverflowException {
         tailIndex = tailIndex + 1;
-//        System.out.println("Tail Index " + tailIndex);
         if (tailIndex >= capacity) {
             /* No resizing implemented, but that would be a good enhancement. */
             tailIndex = tailIndex - 1;
@@ -129,7 +128,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                     AlarmAdded dialog = new AlarmAdded(frame, true);
                     dialog.setLocationRelativeTo(frame);
                     dialog.setVisible(true);
-                    System.out.println("1");
+
                 } else {
                     
                     /* Uses priority backup as a placeholder and break to get out of the loop*/
@@ -141,20 +140,29 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         if (year > ((PriorityItem<T>) storage[i]).getYear()) {
                             priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                             priorityBackup++;
+                            
                         } else if (year == ((PriorityItem<T>) storage[i]).getYear()) {
+                            
                             if (month == ((PriorityItem<T>) storage[i]).getMonth()) {
+                                
                                 if (day > ((PriorityItem<T>) storage[i]).getDay()) {
                                     priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                     priorityBackup++;
+                                    
                                 } else if (day == ((PriorityItem<T>) storage[i]).getDay()) {
+                                    
                                     if (hour > ((PriorityItem<T>) storage[i]).getHour()) {
                                         priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                         priorityBackup++;
+                                        
                                     } else if (hour == ((PriorityItem<T>) storage[i]).getHour()) {
+                                        
                                         if (minute > ((PriorityItem<T>) storage[i]).getMinute()) {
                                             priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                             priorityBackup++;
+                                            
                                         } else if (minute == ((PriorityItem<T>) storage[i]).getMinute()) {
+                                            
                                             if (second > ((PriorityItem<T>) storage[i]).getSecond()) {
                                                 priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                                 priorityBackup++;
@@ -178,6 +186,7 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                                     priorityBackup--;
                                     BREAK = 1;
                                 }
+                                
                             } else if (month > ((PriorityItem<T>) storage[i]).getMonth()) {
                                 priorityBackup = ((PriorityItem<T>) storage[i]).getPriority();
                                 priorityBackup++;
@@ -269,10 +278,9 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
     
         int i2 = i;
         int tailIndex2 = tailIndex;
-        System.out.println(i2);
+
         for (int count = i2; count < tailIndex2 ; count++) 
         {
-            System.out.println("test");
             storage[count] = storage[count + 1];
             tailIndex--;
         }

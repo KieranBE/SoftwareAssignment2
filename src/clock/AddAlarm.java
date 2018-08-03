@@ -16,13 +16,13 @@ public class AddAlarm extends javax.swing.JDialog {
      */
     
     PriorityQueue<Alarm> q2;
-        int second;
-        int minute;
-        int hour;
-        
-        int day;
-        int month;
-        int year;
+    int second;
+    int minute;
+    int hour;
+
+    int day;
+    int month;
+    int year;
     
     public AddAlarm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -164,7 +164,7 @@ public class AddAlarm extends javax.swing.JDialog {
 
     
     public void PassQueue(PriorityQueue<Alarm> q){
-    q2 = q;
+        q2 = q;
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -180,15 +180,12 @@ public class AddAlarm extends javax.swing.JDialog {
         month =(Integer) monSpin.getValue();
         year =(Integer) yeaSpin.getValue();
         
-        //System.out.println("Time:" + hour + ":" + minute + ":" + second 
-        //+ " Date: " + day + "/" + month + "/" + year);
-        
-        System.out.println(second+":"+minute+":"+hour+" "+day+"/"+month+"/"+year);
+        //System.out.println(second+":"+minute+":"+hour+" "+day+"/"+month+"/"+year);
         
         try{
-        q2.add(second, minute, hour, day, month, year);
+            q2.add(second, minute, hour, day, month, year);
         } catch (QueueOverflowException e) {
-        System.out.println("Add operation failed: " + e);
+            System.out.println("Add operation failed: " + e);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

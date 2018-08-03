@@ -230,77 +230,76 @@ public class EditAlarm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void PassQueue(PriorityQueue<Alarm> q){
-    q2 = q;
-    
-    jTextField1.setVisible(false);
-    jTextField2.setVisible(false);
-    jTextField3.setVisible(false);
-    jTextField4.setVisible(false);
-    jTextField5.setVisible(false);
-    jTextField6.setVisible(false);
-    jTextField7.setVisible(false);
-    jTextField8.setVisible(false);
-    jButton1.setVisible(false);
-    jButton2.setVisible(false);
-    jButton3.setVisible(false);
-    jButton4.setVisible(false);
-    jButton5.setVisible(false);
-    jButton6.setVisible(false);
-    jButton7.setVisible(false);
-    jButton8.setVisible(false);
-    jLabel1.setVisible(false);
-    jLabel2.setVisible(false);
-    
-    int amount = q2.length();
-    
-    if(amount == -1){
-        jLabel2.setVisible(true);
-    }
-    else
-    {
-        jLabel1.setVisible(true);
-        if(amount >= 0){
-        jTextField1.setText(q2.singleString(0));
-        jTextField1.setVisible(true);
-        jButton1.setVisible(true);
+        q2 = q;
+
+        jTextField1.setVisible(false);
+        jTextField2.setVisible(false);
+        jTextField3.setVisible(false);
+        jTextField4.setVisible(false);
+        jTextField5.setVisible(false);
+        jTextField6.setVisible(false);
+        jTextField7.setVisible(false);
+        jTextField8.setVisible(false);
+        jButton1.setVisible(false);
+        jButton2.setVisible(false);
+        jButton3.setVisible(false);
+        jButton4.setVisible(false);
+        jButton5.setVisible(false);
+        jButton6.setVisible(false);
+        jButton7.setVisible(false);
+        jButton8.setVisible(false);
+        jLabel1.setVisible(false);
+        jLabel2.setVisible(false);
+
+        int amount = q2.length();
+
+        if(amount == -1){
+            jLabel2.setVisible(true);
         }
-        if(amount >= 1){
-        jTextField2.setText(q2.singleString(1));
-        jTextField2.setVisible(true);
-        jButton2.setVisible(true);
+        else
+        {
+            jLabel1.setVisible(true);
+            if(amount >= 0){
+                jTextField1.setText(q2.singleString(0));
+                jTextField1.setVisible(true);
+                jButton1.setVisible(true);
+            }
+            if(amount >= 1){
+                jTextField2.setText(q2.singleString(1));
+                jTextField2.setVisible(true);
+                jButton2.setVisible(true);
+            }
+            if(amount >= 2){
+                jTextField3.setText(q2.singleString(2));
+                jTextField3.setVisible(true);
+                jButton3.setVisible(true);
+            }
+            if(amount >= 3){
+                jTextField4.setText(q2.singleString(3));
+                jTextField4.setVisible(true);
+                jButton4.setVisible(true);
+            }
+            if(amount >= 4){
+                jTextField5.setText(q2.singleString(4));
+                jTextField5.setVisible(true);
+                jButton5.setVisible(true);
+            }
+            if(amount >= 5){
+                jTextField6.setText(q2.singleString(5));
+                jTextField6.setVisible(true);
+                jButton6.setVisible(true);
+            }
+            if(amount >= 6){
+                jTextField7.setText(q2.singleString(6));
+                jTextField7.setVisible(true);
+                jButton7.setVisible(true);
+            }
+            if(amount >= 7){
+                jTextField8.setText(q2.singleString(7));
+                jTextField8.setVisible(true);
+                jButton8.setVisible(true);
+            }
         }
-        if(amount >= 2){
-        jTextField3.setText(q2.singleString(2));
-        jTextField3.setVisible(true);
-        jButton3.setVisible(true);
-        }
-        if(amount >= 3){
-        jTextField4.setText(q2.singleString(3));
-        jTextField4.setVisible(true);
-        jButton4.setVisible(true);
-        }
-        if(amount >= 4){
-        jTextField5.setText(q2.singleString(4));
-        jTextField5.setVisible(true);
-        jButton5.setVisible(true);
-        }
-        if(amount >= 5){
-        jTextField6.setText(q2.singleString(5));
-        jTextField6.setVisible(true);
-        jButton6.setVisible(true);
-        }
-        if(amount >= 6){
-        jTextField7.setText(q2.singleString(6));
-        jTextField7.setVisible(true);
-        jButton7.setVisible(true);
-        }
-        if(amount >= 7){
-        jTextField8.setText(q2.singleString(7));
-        jTextField8.setVisible(true);
-        jButton8.setVisible(true);
-        }
-    }
-    
     }
     
     public int getDelete(){

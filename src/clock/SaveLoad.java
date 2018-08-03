@@ -85,11 +85,11 @@ public class SaveLoad extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void PassQueue(PriorityQueue<Alarm> q){
-    q2 = q;
+        q2 = q;
     }
     
     public PriorityQueue<Alarm> GetQueue(){
-    return q;
+        return q;
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -106,43 +106,38 @@ public class SaveLoad extends javax.swing.JDialog {
         String EndCal = "END:VCALENDAR";
         
         String ICalendar = BeginCal + "\n" + Version + "\n" + ID + "\n" + 
-            BeginEv + "\n" + UserID + "\n" + Stamp + "\n" + Start + "\n" + 
-            Summary + "\n" + q2.saveCal() + EndEv + "\n" + EndCal ; 
+        BeginEv + "\n" + UserID + "\n" + Stamp + "\n" + Start + "\n" + 
+        Summary + "\n" + q2.saveCal() + EndEv + "\n" + EndCal ; 
         
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Pick a file to overrite or save a new file");    
         
         int pass = fileChooser.showSaveDialog(frame);
 
-        
         if (pass == JFileChooser.APPROVE_OPTION) 
         {
             File fileName = fileChooser.getSelectedFile();
             String nameOfFile = fileName.getAbsolutePath() + ".ics";
- 
-            
-        try 
-        {
-            File file = new File(nameOfFile);
-            
-            if (!file.exists()) 
+            try 
             {
-                file.createNewFile();
-            }
+                File file = new File(nameOfFile);
 
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(ICalendar);
+                if (!file.exists()) 
+                {
+                    file.createNewFile();
+                }
 
-            bw.close();
+                FileWriter fw = new FileWriter(file.getAbsoluteFile());
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(ICalendar);
+                bw.close();
+                
             } 
-        
             catch (IOException e) 
             {
                 e.printStackTrace();
             }
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -185,7 +180,7 @@ public class SaveLoad extends javax.swing.JDialog {
                     }
                 }   
             }
-            System.out.println(alarm);
+            //System.out.println(alarm);
             loadCheck = 1;
             dispose();
         } 

@@ -48,36 +48,41 @@ public class Model extends Observable {
         second = date.get(Calendar.SECOND);
 
         if(count == 1){
-        if (q2.isEmpty()) {
-        } else {
-            if (q2.getYea() == year) {
-                if (q2.getMon() == month) {
-                    if (q2.getDay2() == day) {
-                        if (q2.getHou() == hour) {
-                            if (q2.getMin() == minute) {
-                                System.out.println("Alarm goes off");
-                                JFrame frame = new JFrame();
-                                AlarmOff dialog = new AlarmOff(frame, true);
-                                dialog.PassQueue(q2);
-                                dialog.setLocationRelativeTo(frame);
-                                dialog.setVisible(true);
-                                count = 0;
-                                try {
-                                    q2.remove();
-                                } catch (QueueUnderflowException e) {
-                                    System.out.println("Can't remove head of queue: " + e);
+            
+            if (q2.isEmpty()) {
+            } 
+            else {
+                if (q2.getYea() == year) {
+                    
+                    if (q2.getMon() == month) {
+                        
+                        if (q2.getDay2() == day) {
+                            
+                            if (q2.getHou() == hour) {
+                                
+                                if (q2.getMin() == minute) {
+                                    
+                                    if(q2.getSec() == second)
+                                    {
+                                        System.out.println("Alarm goes off");
+                                        JFrame frame = new JFrame();
+                                        AlarmOff dialog = new AlarmOff(frame, true);
+                                        dialog.PassQueue(q2);
+                                        dialog.setLocationRelativeTo(frame);
+                                        dialog.setVisible(true);
+                                        count = 0;
+                                        try {
+                                            q2.remove();
+                                        } catch (QueueUnderflowException e) {
+                                            System.out.println("Can't remove head of queue: " + e);
+                                        }
+                                    }
                                 }
-                                /* I got an error when i tried to compare the seconds, 
-                                i tried to fix it but i did not have enough time*/
-//                                if(q.getSec() == second)
-//                                {
-//                                }
                             }
                         }
                     }
                 }
             }
-        }
         }
 
         if (oldSecond != second) {

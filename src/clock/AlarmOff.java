@@ -76,16 +76,16 @@ public class AlarmOff extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     public void PassQueue(PriorityQueue<Alarm> q){
-    q2 = q;
-    String text = "Alarm ";
-    try {
-       text = text + q2.head();
-       text = text + " has gone off.";
-    } catch (QueueUnderflowException e) {
-        System.out.println("Can't remove head of queue: " + e);
-    }
-    
-    jTextArea1.append(text);
+        q2 = q;
+        String text = "Alarm ";
+        try {
+           text = text + q2.head();
+           text = text + " has gone off.";
+        } catch (QueueUnderflowException e) {
+            System.out.println("Can't remove head of queue: " + e);
+        }
+
+        jTextArea1.append(text);
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
