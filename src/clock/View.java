@@ -85,7 +85,7 @@ public class View implements Observer {
         }
         });
         
-        JButton saveButton = new JButton("Save Alarms and Quit");
+        JButton saveButton = new JButton("Save or Load Alarms");
         pane.add(saveButton, BorderLayout.PAGE_END);
          
         saveButton.addActionListener(new ActionListener(){
