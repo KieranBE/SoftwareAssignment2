@@ -91,8 +91,11 @@ public class View implements Observer {
         saveButton.addActionListener(new ActionListener(){
 
         public void actionPerformed(ActionEvent evt){
-            System.out.println("Going to Save Alarms");
-            System.exit(0);
+            SaveLoad dialog = new SaveLoad(frame, true);
+            dialog.PassQueue(q2);
+            dialog.setLocationRelativeTo(frame);
+            dialog.setVisible(true);
+            System.out.println("Going to Save/Load Alarms");
         }
         });
         
