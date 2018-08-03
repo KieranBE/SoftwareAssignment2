@@ -125,6 +125,10 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                 if (tailIndex == 0) {
                     int priority = 0;
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priority);
+                    
+                    /**
+                    * Opens the popup if the alarm has been added
+                    */
                     AlarmAdded dialog = new AlarmAdded(frame, true);
                     dialog.setLocationRelativeTo(frame);
                     dialog.setVisible(true);
@@ -215,6 +219,10 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         i = i - 1;
                     }
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
+                    
+                    /**
+                    * Opens the popup if the alarm has been added
+                    */
                     AlarmAdded dialog = new AlarmAdded(frame, true);
                     dialog.setLocationRelativeTo(frame);
                     dialog.setVisible(true);
@@ -224,6 +232,9 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
             {
                 tailIndex--;
                 
+                /**
+                * Opens the popup if the alarm has not been added
+                */
                 AlarmNotAdded dialog = new AlarmNotAdded(frame, true);
                 dialog.setLocationRelativeTo(frame);
                 dialog.setVisible(true);
@@ -263,16 +274,25 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         return result;
     }
     
+    /**
+    * Returns a the data for a specific alarm
+    */
     @Override
     public String singleString(int i){
         return storage[i].toString();
     }
     
+    /**
+    * Returns the amount of alarms stored
+    */
     @Override
     public int length(){
         return tailIndex;
     }
     
+    /**
+    * Used to delete specific alarms
+    */
     @Override
     public void deleteSelected(int i){
     
@@ -290,6 +310,9 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
         }
     }
     
+    /**
+    * This is used for saving the alarm to the Calendar
+    */
     public String saveCal(){
         String AlarmString = "";
         
