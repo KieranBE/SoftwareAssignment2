@@ -1,6 +1,7 @@
 package clock;
 
 import java.util.Calendar;
+import javax.swing.JFrame;
 
 /**
  * Implementation of the PriorityQueue ADT using a sorted array for storage.
@@ -119,11 +120,15 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                     gateCode = 1;
                 }
             }
-            System.out.println(gateCode);
+            
+            final JFrame frame = new JFrame();
             if (gateCode == 1) {
                 if (tailIndex == 0) {
                     int priority = 0;
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priority);
+                    AlarmAdded dialog = new AlarmAdded(frame, true);
+                    dialog.setLocationRelativeTo(frame);
+                    dialog.setVisible(true);
                     System.out.println("1");
                 } else {
                     
@@ -201,11 +206,18 @@ public class SortedArrayPriorityQueue<T> implements PriorityQueue<T> {
                         i = i - 1;
                     }
                     storage[i] = new PriorityItem<>(second, minute, hour, day, month, year, priorityBackup);
+                    AlarmAdded dialog = new AlarmAdded(frame, true);
+                    dialog.setLocationRelativeTo(frame);
+                    dialog.setVisible(true);
                 }
             }
             else
             {
                 tailIndex--;
+                
+                AlarmNotAdded dialog = new AlarmNotAdded(frame, true);
+                dialog.setLocationRelativeTo(frame);
+                dialog.setVisible(true);
             }
         }
     }
