@@ -11,19 +11,22 @@ public class View implements Observer {
     
     ClockPanel panel;
     PriorityQueue<Alarm> q2; 
-
+    int count = 0;
+    Model model2;
     /**
      *
      * @param model
      * @param q
      */
     public View(Model model, PriorityQueue<Alarm> q) {
+        model2 = model;
         final JFrame frame = new JFrame();
         panel = new ClockPanel(model);
         //frame.setContentPane(panel);
         frame.setTitle("Java Clock");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         q2 = q;
+        
         // Start of border layout code
         
         // I've just put a single button in each of the border positions:
@@ -63,9 +66,12 @@ public class View implements Observer {
                 + " Date: " + day + "/" + month + "/" + year);
                 System.out.println("Going to Add Alarm");*/
                 System.out.println(q2.toString());
+                AlarmUpdate();
                 }
             }
             });
+        
+        
         
         panel.setPreferredSize(new Dimension(200, 200));
         pane.add(panel, BorderLayout.CENTER);
@@ -116,5 +122,9 @@ public class View implements Observer {
     
     public void update(Observable o, Object arg) {
         panel.repaint();
+    }
+    
+    public void AlarmUpdate(){
+    model2.passQueue(q2);
     }
 }

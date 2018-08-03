@@ -5,6 +5,7 @@ import java.util.Observable;
 import javax.swing.JFrame;
 //import java.util.GregorianCalendar;
 
+
 public class Model extends Observable {
 
     int day = 0;
@@ -16,28 +17,23 @@ public class Model extends Observable {
     int second = 0;
 
     int oldSecond = 0;
+    
+    int count = 0;
 
+    PriorityQueue<Alarm> q2;
+    
     public Model() {
         update();
     }
 
+    public void passQueue(PriorityQueue<Alarm> q){
+    q2 = q;
+    count = 1;
+    }
+    
     public void update() {
         /* I used the commented out code to test my alarm */
-        PriorityQueue<Alarm> q;
-        q = new SortedArrayPriorityQueue<>(8);
-//        int sec2 = 30;
-//        int min2 = 1;
-//        int hou2 = 10;
-//
-//        int day2 = 15;
-//        int mon2 = 5;
-//        int yea2 = 2018;
-//
-//        try {
-//            q.add(sec2, min2, hou2, day2, mon2, yea2);
-//        } catch (QueueOverflowException e) {
-//            System.out.println("Add operation failed: " + e);
-//        }
+        
 
         Calendar date = Calendar.getInstance();
 
@@ -46,24 +42,27 @@ public class Model extends Observable {
         month = month + 1;
         year = date.get(Calendar.YEAR);
 
-        hour = date.get(Calendar.HOUR);
+        hour = date.get(Calendar.HOUR_OF_DAY);
         minute = date.get(Calendar.MINUTE);
         oldSecond = second;
         second = date.get(Calendar.SECOND);
-        if (q.isEmpty()) {
+
+        if(count == 1){
+        if (q2.isEmpty()) {
         } else {
-            if (q.getYea() == year) {
-                if (q.getMon() == month) {
-                    if (q.getDay2() == day) {
-                        if (q.getHou() == hour) {
-                            if (q.getMin() == minute) {
+            if (q2.getYea() == year) {
+                if (q2.getMon() == month) {
+                    if (q2.getDay2() == day) {
+                        if (q2.getHou() == hour) {
+                            if (q2.getMin() == minute) {
                                 System.out.println("Alarm goes off");
                                 JFrame frame = new JFrame();
                                 AlarmOff dialog = new AlarmOff(frame, true);
                                 dialog.setLocationRelativeTo(frame);
                                 dialog.setVisible(true);
+                                count = 0;
                                 try {
-                                    q.remove();
+                                    q2.remove();
                                 } catch (QueueUnderflowException e) {
                                     System.out.println("Can't remove head of queue: " + e);
                                 }
@@ -77,6 +76,7 @@ public class Model extends Observable {
                     }
                 }
             }
+        }
         }
 
         if (oldSecond != second) {
