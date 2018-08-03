@@ -5,6 +5,14 @@
  */
 package clock;
 
+import java.io.BufferedWriter;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 /**
  *
  * @author Kieran
@@ -15,6 +23,10 @@ public class SaveLoad extends javax.swing.JDialog {
      * Creates new form SaveLoad
      */
     PriorityQueue<Alarm> q2;
+    PriorityQueue<Alarm> q;
+    final JFrame frame = new JFrame();
+    int loadCheck = 0;
+
     public SaveLoad(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -77,7 +89,7 @@ public class SaveLoad extends javax.swing.JDialog {
     }
     
     public PriorityQueue<Alarm> GetQueue(){
-    return q2;
+    return q;
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -97,15 +109,97 @@ public class SaveLoad extends javax.swing.JDialog {
             BeginEv + "\n" + UserID + "\n" + Stamp + "\n" + Start + "\n" + 
             Summary + "\n" + q2.saveCal() + EndEv + "\n" + EndCal ; 
         
-        System.out.println(ICalendar);
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Pick a file to overrite or save a new file");    
         
+        int pass = fileChooser.showSaveDialog(frame);
+
+        
+        if (pass == JFileChooser.APPROVE_OPTION) 
+        {
+            File fileName = fileChooser.getSelectedFile();
+            String nameOfFile = fileName.getAbsolutePath() + ".ics";
+ 
+            
+        try 
+        {
+            File file = new File(nameOfFile);
+            
+            if (!file.exists()) 
+            {
+                file.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(ICalendar);
+
+            bw.close();
+            } 
+        
+            catch (IOException e) 
+            {
+                e.printStackTrace();
+            }
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
+        q = new SortedArrayPriorityQueue<>(8);
+        
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Pick a file to load");    
+        
+        int pass = fileChooser.showOpenDialog(frame);
+
+        
+        if (pass == JFileChooser.APPROVE_OPTION) 
+        {
+            File fileName = fileChooser.getSelectedFile();
+            Scanner in = null;
+            String alarm = "";
+        try 
+        {
+            in = new Scanner(fileName);
+            while(in.hasNext())
+            {
+                String line=in.nextLine();
+                if(line.contains("ALARM"))
+                {  
+                    alarm = line.replace("ALARM:","");
+                    alarm = alarm.replace("Z","");
+                    alarm = alarm.replace("T","");
+                    int year = Integer.parseInt(alarm.substring(0, 4));
+                    int month = Integer.parseInt(alarm.substring(4, 6));
+                    int day = Integer.parseInt(alarm.substring(6, 8));
+                    int hour = Integer.parseInt(alarm.substring(8, 10));
+                    int minute = Integer.parseInt(alarm.substring(10, 12));
+                    int second = Integer.parseInt(alarm.substring(12, 14));
+                    System.out.println(year + "/" + month + "/" + day  + " " +hour  + ":" +minute  + ":" +second);
+                    try{
+                    q.add(second, minute, hour, day, month, year);
+                    } catch (QueueOverflowException e) {
+                    System.out.println("Add operation failed: " + e);
+                    }
+                }   
+            }
+            System.out.println(alarm);
+            loadCheck = 1;
+            dispose();
+        } 
+        catch (FileNotFoundException e) 
+        {
+            e.printStackTrace();
+        }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
  
+    public int getLoadCheck(){
+        return loadCheck;
+    }
+    
     /**
      * @param args the command line arguments
      */
