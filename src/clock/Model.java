@@ -58,6 +58,7 @@ public class Model extends Observable {
                                 System.out.println("Alarm goes off");
                                 JFrame frame = new JFrame();
                                 AlarmOff dialog = new AlarmOff(frame, true);
+                                dialog.PassQueue(q2);
                                 dialog.setLocationRelativeTo(frame);
                                 dialog.setVisible(true);
                                 count = 0;
